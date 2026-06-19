@@ -1,0 +1,35 @@
+name: Validate Renovate presets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "*.json"
+      - ".github/workflows/validate.yml"
+  pull_request:
+    paths:
+      - "*.json"
+      - ".github/workflows/validate.yml"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - run: |
+          for config in default.json python.json; do
+            docker run --rm -v \
+              "${{ github.workspace }}:/workspace" \
+              -w /workspace \
+              ghcr.io/renovatebot/renovate:latest \
+              renovate-config-validator \
+              --strict \
+              "$config"
+          done

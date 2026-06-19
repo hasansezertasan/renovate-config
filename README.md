@@ -1,5 +1,7 @@
 # renovate-config
 
+[![Validate Renovate presets](https://github.com/hasansezertasan/renovate-config/actions/workflows/validate.yml/badge.svg)](https://github.com/hasansezertasan/renovate-config/actions/workflows/validate.yml)
+
 Shared [Renovate](https://docs.renovatebot.com/) configuration presets for my repositories.
 
 Instead of duplicating Renovate settings in every project, each repo extends the
@@ -61,6 +63,17 @@ The `python.json` preset already extends `default.json`, so reference it alone:
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["github>hasansezertasan/renovate-config:python"]
 }
+```
+
+## Validation
+
+Every preset is checked in CI by Renovate's official
+[`renovate-config-validator`](https://docs.renovatebot.com/config-validation/)
+via [`.github/workflows/validate.yml`](./.github/workflows/validate.yml) on each
+push and pull request, so a broken preset can't reach `main`. Run it locally too:
+
+```sh
+npx --yes --package renovate -- renovate-config-validator --strict default.json python.json
 ```
 
 ## Notes
