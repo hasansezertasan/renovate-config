@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>hasansezertasan/renovate-config"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 4am on monday"]
+  },
+  "packageRules": [
+    {
+      "description": "Group dev/test/lint/docs dependency-group updates together",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": [
+        "dev",
+        "test",
+        "lint",
+        "docs",
+        "dev-dependencies",
+        "optional-dependencies"
+      ],
+      "groupName": "dev dependencies"
+    },
+    {
+      "description": "Group non-major runtime updates to reduce PR noise",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["project.dependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "python dependencies (non-major)"
+    }
+  ]
+}

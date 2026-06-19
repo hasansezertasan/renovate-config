@@ -50,6 +50,18 @@ Pin to a tag or branch for reproducibility:
 | Preset | Reference | Description |
 | ------ | --------- | ----------- |
 | `default.json` | `github>hasansezertasan/renovate-config` | Base config: `config:recommended`, semantic commits, dependency dashboard, `internal` label. |
+| `python.json` | `github>hasansezertasan/renovate-config:python` | Extends the base, adds `uv.lock` lock-file maintenance and `pep621` grouping for dev and non-major runtime updates. |
+
+### Python / `uv` projects
+
+The `python.json` preset already extends `default.json`, so reference it alone:
+
+```json
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>hasansezertasan/renovate-config:python"]
+}
+```
 
 ## Notes
 
