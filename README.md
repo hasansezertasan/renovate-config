@@ -51,7 +51,7 @@ Pin to a tag or branch for reproducibility:
 
 | Preset | Reference | Description |
 | ------ | --------- | ----------- |
-| `default.json` | `github>hasansezertasan/renovate-config` | Base config: `config:recommended`, semantic commits, dependency dashboard, `internal` label. |
+| `default.json` | `github>hasansezertasan/renovate-config` | Base config: `config:recommended`, semantic commits, dependency dashboard, `internal` label, and a `prek.toml` hook-`rev` custom manager (Renovate's built-in pre-commit manager only reads `.pre-commit-config.yaml`). |
 | `python.json` | `github>hasansezertasan/renovate-config:python` | Extends the base, adds `uv.lock` lock-file maintenance and `pep621` grouping for dev and non-major runtime updates. |
 
 ### Python / `uv` projects
