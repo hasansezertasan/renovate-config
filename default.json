@@ -14,5 +14,13 @@
       ],
       "datasourceTemplate": "github-tags"
     }
+  ],
+  "packageRules": [
+    {
+      "description": "Label prek.toml hook updates clearly in commit/PR titles",
+      "matchManagers": ["custom.regex"],
+      "matchFileNames": ["prek.toml", "**/prek.toml"],
+      "commitMessageTopic": "prek hook {{depName}}"
+    }
   ]
 }
