@@ -17,10 +17,21 @@
   ],
   "packageRules": [
     {
-      "description": "Label prek.toml hook updates clearly in commit/PR titles",
+      "description": "Label and auto-merge green prek.toml hook rev updates",
       "matchManagers": ["custom.regex"],
       "matchFileNames": ["prek.toml", "**/prek.toml"],
-      "commitMessageTopic": "prek hook {{depName}}"
+      "commitMessageTopic": "prek hook {{depName}}",
+      "automerge": true
+    },
+    {
+      "description": "Auto-merge green GitHub Actions updates",
+      "matchManagers": ["github-actions"],
+      "automerge": true
+    },
+    {
+      "description": "Never auto-merge Python version bumps (e.g. .python-version)",
+      "matchDatasources": ["python-version"],
+      "automerge": false
     }
   ]
 }

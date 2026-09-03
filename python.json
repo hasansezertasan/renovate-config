@@ -7,7 +7,7 @@
   },
   "packageRules": [
     {
-      "description": "Group dev/test/lint/docs dependency-group updates together",
+      "description": "Group dev/test/lint/docs dependency-group updates together and auto-merge when green",
       "matchManagers": ["pep621"],
       "matchDepTypes": [
         "dev",
@@ -17,7 +17,8 @@
         "dev-dependencies",
         "optional-dependencies"
       ],
-      "groupName": "dev dependencies"
+      "groupName": "dev dependencies",
+      "automerge": true
     },
     {
       "description": "Group non-major runtime updates to reduce PR noise",
