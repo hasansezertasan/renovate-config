@@ -7,16 +7,17 @@
   },
   "packageRules": [
     {
-      "description": "Group dev/test/lint/docs dependency-group updates together and auto-merge when green",
+      "description": "Auto-merge green PEP 735 dev/test/lint/docs dependency groups",
       "matchManagers": ["pep621"],
-      "matchDepTypes": [
-        "dev",
-        "test",
-        "lint",
-        "docs",
-        "dev-dependencies",
-        "optional-dependencies"
-      ],
+      "matchDepTypes": ["dependency-groups"],
+      "matchJsonata": ["managerData.depGroup in ['dev', 'test', 'lint', 'docs']"],
+      "groupName": "dev dependencies",
+      "automerge": true
+    },
+    {
+      "description": "Auto-merge green uv-native dev dependencies",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["tool.uv.dev-dependencies"],
       "groupName": "dev dependencies",
       "automerge": true
     },

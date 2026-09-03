@@ -29,8 +29,8 @@
       "automerge": true
     },
     {
-      "description": "Never auto-merge Python version bumps (e.g. .python-version)",
-      "matchDatasources": ["python-version"],
+      "description": "Never auto-merge Python version bumps (.python-version, pyenv manager)",
+      "matchManagers": ["pyenv"],
       "automerge": false
     }
   ]
