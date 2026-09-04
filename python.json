@@ -9,14 +9,14 @@
     {
       "description": "Group dev/test/lint/docs dependency-group updates together",
       "matchManagers": ["pep621"],
-      "matchDepTypes": [
-        "dev",
-        "test",
-        "lint",
-        "docs",
-        "dev-dependencies",
-        "optional-dependencies"
-      ],
+      "matchDepTypes": ["dependency-groups"],
+      "matchJsonata": ["managerData.depGroup in ['dev', 'test', 'lint', 'docs']"],
+      "groupName": "dev dependencies"
+    },
+    {
+      "description": "Group uv-native dev dependencies",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["tool.uv.dev-dependencies"],
       "groupName": "dev dependencies"
     },
     {
