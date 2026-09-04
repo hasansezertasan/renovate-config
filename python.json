@@ -7,19 +7,17 @@
   },
   "packageRules": [
     {
-      "description": "Auto-merge green PEP 735 dev/test/lint/docs dependency groups",
+      "description": "Group dev/test/lint/docs dependency-group updates together",
       "matchManagers": ["pep621"],
-      "matchDepTypes": ["dependency-groups"],
-      "matchJsonata": ["managerData.depGroup in ['dev', 'test', 'lint', 'docs']"],
-      "groupName": "dev dependencies",
-      "automerge": true
-    },
-    {
-      "description": "Auto-merge green uv-native dev dependencies",
-      "matchManagers": ["pep621"],
-      "matchDepTypes": ["tool.uv.dev-dependencies"],
-      "groupName": "dev dependencies",
-      "automerge": true
+      "matchDepTypes": [
+        "dev",
+        "test",
+        "lint",
+        "docs",
+        "dev-dependencies",
+        "optional-dependencies"
+      ],
+      "groupName": "dev dependencies"
     },
     {
       "description": "Group non-major runtime updates to reduce PR noise",
@@ -27,12 +25,6 @@
       "matchDepTypes": ["project.dependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "python dependencies (non-major)"
-    },
-    {
-      "description": "Never auto-merge direct (runtime) dependencies - the owner merges these manually",
-      "matchManagers": ["pep621"],
-      "matchDepTypes": ["project.dependencies"],
-      "automerge": false
     }
   ]
 }

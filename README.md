@@ -51,10 +51,8 @@ Pin to a tag or branch for reproducibility:
 
 | Preset | Reference | Description |
 | ------ | --------- | ----------- |
-| `default.json` | `github>hasansezertasan/renovate-config` | Base config: `config:recommended`, semantic commits, dependency dashboard, `internal` label, and a `prek.toml` hook-`rev` custom manager (Renovate's built-in pre-commit manager only reads `.pre-commit-config.yaml`). **Automerges green GitHub Actions and prek-hook `rev` updates.** Never auto-merges Python version (`.python-version`) bumps. |
-| `python.json` | `github>hasansezertasan/renovate-config:python` | Extends the base, adds `uv.lock` lock-file maintenance and `pep621` grouping. **Automerges green dev/test/lint/docs dependency updates.** Never auto-merges direct (runtime) dependencies. |
-
-> **Auto-merge is green-only and scoped:** a matching PR merges automatically only after all its checks pass. This is enforced with `platformAutomerge: false` (see below) — Renovate — not GitHub — decides when a branch is green, so optional checks can't slip a premature merge through. Direct (runtime) dependencies and Python version bumps are **never** auto-merged — the owner reviews those manually. Override any rule per-repo via `packageRules` (see *Per-repo overrides*).
+| `default.json` | `github>hasansezertasan/renovate-config` | Base config: `config:recommended`, semantic commits, dependency dashboard, `internal` label, and a `prek.toml` hook-`rev` custom manager (Renovate's built-in pre-commit manager only reads `.pre-commit-config.yaml`). Hook bumps are labeled `prek hook <owner/repo>` in commit/PR titles. |
+| `python.json` | `github>hasansezertasan/renovate-config:python` | Extends the base, adds `uv.lock` lock-file maintenance and `pep621` grouping for dev and non-major runtime updates. |
 
 ### Python / `uv` projects
 
