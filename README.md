@@ -52,7 +52,7 @@ Pin to a tag or branch for reproducibility:
 | Preset | Reference | Description |
 | ------ | --------- | ----------- |
 | `default.json` | `github>hasansezertasan/renovate-config` | Base config: `config:recommended`, semantic commits, dependency dashboard, `internal` label, and a `prek.toml` hook-`rev` custom manager (Renovate's built-in pre-commit manager only reads `.pre-commit-config.yaml`). Hook bumps are labeled `prek hook <owner/repo>` in commit/PR titles. |
-| `python.json` | `github>hasansezertasan/renovate-config:python` | Extends the base, adds `uv.lock` lock-file maintenance and `pep621` grouping for dev and non-major runtime updates. |
+| `python.json` | `github>hasansezertasan/renovate-config:python` | Extends the base, adds `uv.lock` lock-file maintenance, `pep621` grouping for dev and non-major runtime updates, and strict constraints filtering so only releases compatible with the project's `requires-python` are proposed. |
 
 ### Python / `uv` projects
 
