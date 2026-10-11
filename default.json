@@ -21,6 +21,22 @@
       "matchManagers": ["custom.regex"],
       "matchFileNames": ["prek.toml", "**/prek.toml"],
       "commitMessageTopic": "prek hook {{depName}}"
+    },
+    {
+      "description": "Group all GitHub Action updates into one PR",
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions"
+    },
+    {
+      "description": "Group prek hook updates into one PR",
+      "matchManagers": ["pre-commit"],
+      "groupName": "prek hooks"
+    },
+    {
+      "description": "Group prek.toml hook updates into the same PR (file-restricted so unrelated repo-local regex managers never leak in)",
+      "matchManagers": ["custom.regex"],
+      "matchFileNames": ["prek.toml", "**/prek.toml"],
+      "groupName": "prek hooks"
     }
   ]
 }
