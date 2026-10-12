@@ -4,6 +4,7 @@
   "labels": ["internal"],
   "semanticCommits": "enabled",
   "dependencyDashboard": true,
+  "schedule": ["before 4am on monday"],
   "customManagers": [
     {
       "customType": "regex",
