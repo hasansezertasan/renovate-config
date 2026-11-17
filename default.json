@@ -3,7 +3,7 @@
   "extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
   "labels": ["internal"],
   "semanticCommits": "enabled",
-  "dependencyDashboard": true,
+  "dependencyDashboard": { "enabled": true },
   "schedule": ["before 4am on monday"],
   "customManagers": [
     {

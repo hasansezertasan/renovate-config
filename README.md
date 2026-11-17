@@ -53,6 +53,22 @@ Pin to a tag or branch for reproducibility:
 | ------ | --------- | ----------- |
 | `default.json` | `github>hasansezertasan/renovate-config` | Base config: `config:recommended`, semantic commits, dependency dashboard, `internal` label, and a `prek.toml` hook-`rev` custom manager (Renovate's built-in pre-commit manager only reads `.pre-commit-config.yaml`). Hook bumps are labeled `prek hook <owner/repo>` in commit/PR titles. |
 | `python.json` | `github>hasansezertasan/renovate-config:python` | Extends the base, adds `uv.lock` lock-file maintenance, `pep621` grouping for dev and non-major runtime updates, and strict constraints filtering so only releases compatible with the project's `requires-python` are proposed. |
+| `automerge.json` | `github>hasansezertasan/renovate-config:automerge` | Opt-in. Automerges `patch`, `pin`, `pinDigest` and `digest` updates once every check passes (`platformAutomerge: false`, so Renovate checks the branch status itself). Minor and major updates still need review, and a grouped PR automerges only when every update in it qualifies. Extend it only from repos that have CI: in a repo with no checks, nothing can fail. |
+
+### Automerge (opt-in)
+
+The base presets never automerge: every Renovate PR waits for review. A repo with CI
+can opt in to automerging low-risk updates by adding the `automerge` preset:
+
+```json
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>hasansezertasan/renovate-config:python",
+    "github>hasansezertasan/renovate-config:automerge"
+  ]
+}
+```
 
 ### Python / `uv` projects
 
@@ -73,7 +89,7 @@ via [`.github/workflows/validate.yml`](./.github/workflows/validate.yml) on each
 push and pull request, so a broken preset can't reach `main`. Run it locally too:
 
 ```sh
-npx --yes --package renovate -- renovate-config-validator --strict default.json python.json
+npx --yes --package renovate -- renovate-config-validator --strict default.json python.json automerge.json
 ```
 
 ## Notes
