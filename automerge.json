@@ -1,0 +1,12 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Opt-in: automerge low-risk updates once every check passes. Extend this only from repos that have CI.",
+  "platformAutomerge": false,
+  "packageRules": [
+    {
+      "description": "Automerge patch, pin and digest updates; minor and major still need review",
+      "matchUpdateTypes": ["patch", "pin", "pinDigest", "digest"],
+      "automerge": true
+    }
+  ]
+}

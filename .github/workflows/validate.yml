@@ -24,7 +24,7 @@ jobs:
           persist-credentials: false
 
       - run: |
-          for config in default.json python.json; do
+          for config in default.json python.json automerge.json; do
             docker run --rm -v \
               "${{ github.workspace }}:/workspace" \
               -w /workspace \
